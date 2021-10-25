@@ -51,8 +51,8 @@ def extract_data(energy_file, weather_file, timezone):
             gen = row[gen_col]
 
             data_row = {'time': utils.timestr_to_timestamp(datetime, timezone),
-                        'consumption': int(round(float(use) * 1000, 0)),
-                        'generation': int(round(float(gen) * 1000, 0))}
+                        'consumption': int(round(max(0, float(use)) * 1000, 0)),
+                        'generation': int(round(max(0, float(gen)) * 1000, 0))}
             data.append(data_row)
 
         # data_df = pd.DataFrame(data)
